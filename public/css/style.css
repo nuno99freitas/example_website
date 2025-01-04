@@ -1,0 +1,417 @@
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal?styles=158869');
+:root {
+    --global-margin: 10px; /* Define the global margin variable */
+}
+
+
+body {
+	overflow: auto; /* Enables scrolling */
+	scrollbar-width: none; /* For Firefox */
+    font-family: 'PP Neue Montreal', sans-serif;
+	font-weight: 500;
+	width: 100%; /* Ensure body is full-width */
+	margin: 0;   /* Reset margins if necessary */
+	padding: 0;  /* Reset padding if necessary */
+}
+
+
+body .container {
+	max-width: 120rem !important;
+}
+.book-page {
+  padding: 0rem 0rem !important;
+  flex-grow: 1;
+  
+
+}
+
+
+.book-brand {
+	margin-top: 0;
+	margin-bottom: var(--global-margin) !important;;
+  
+	img {
+	  height: calc(4 * var(--global-margin));
+	  width: calc(4 * var(--global-margin));
+
+	}
+}
+aside nav ul li {
+    margin: 1em 0;
+    position: relative;
+	border-top: 5px;
+	border-color:aqua;
+}
+
+
+.book-menu {
+	background-color: #edededf1;
+	flex: 0 0 25%;
+	font-size: 1.2rem;
+  
+.book-menu-content {
+	  background-color: #edededf1;
+	  width: 25%;
+	  padding: var(--global-margin) 1rem;
+  
+}
+  
+	a,
+	label {
+	  color: inherit;
+	  cursor: pointer;
+	  word-wrap: break-word;
+	}
+  
+	a.active {
+	  color: var(--color-link);
+	}
+  
+	input.toggle + label + ul {
+	  display: none;
+	}
+  
+	input.toggle:checked + label + ul {
+	  display: block;
+	}
+  
+	input.toggle + label::after {
+	  content: "▸";
+	}
+  
+	input.toggle:checked + label::after {
+	  content: "▾";
+	}
+  }
+  
+  
+
+
+body::-webkit-scrollbar {
+	display: none !important; /* For Chrome, Safari, and Edge */
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+  }
+  
+div.default_container {
+	padding-left: var(--global-margin) !important;
+	padding-right: var(--global-margin) !important;
+	width: 100%;
+	margin-bottom: var(--global-margin) !important;	
+	display: flex;
+	justify-content: center;  /* Horizontally centers the image */
+	align-items: center;      /* Vertically centers the image */
+	height: 100%;             /* Ensure the div has a height to center the image vertically */
+}
+	
+div.top_box { 
+	height: calc(6 * var(--global-margin)) !important;
+}
+
+
+.event_button {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px;
+    border: 1px solid black;
+    border-radius: 10%;
+    font-size: 12px;
+    padding: 2px 10px; /* Combine padding for simplicity */
+    box-shadow: 1px 1px black;
+    line-height: 1; /* Prevent any line-height inheritance issues */
+	
+}
+
+figure.event_icon{
+	height: 12px;
+	width: 12px;
+	margin: 0px;	
+	display: block;
+}
+.event_button.date {
+    background-color: #ffffff !important;
+	border: 1px white solid !important;
+	border-radius: 10%;
+	padding: 2px 10px; /* Combine padding for simplicity */
+	box-shadow: none;
+	float: right;
+	line-height: 1.7; /* Prevent any line-height inheritance issues */
+}
+
+
+.event_button.nuisis {
+    background-color: #f99d1b !important;
+	color: #ffffff; /* Set text color to white */
+}
+
+.event_button.agra {
+    background-color: #8e8e8d !important;
+	color: #ffffff; /* Set text color to white */
+}
+
+.event_button.rca {
+    background-color: #e23a19 !important;
+	color: #ffffff; /* Set text color to white */
+}
+
+.event_button.ervaDaninha {
+    background-color: #007351 !important;
+	color: #ffffff; /* Set text color to white */
+}
+
+.event_date  {
+	vertical-align: middle; /* Align with adjacent inline elements like .event_button */
+	display:inline;
+	padding: 2px;
+	margin:0px;
+	margin-left:auto;
+	font-size:12px;
+	line-height:1;
+}
+
+
+
+.event_icon_container {
+	display:inline-flex;
+	align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally if needed */
+	vertical-align: middle; /* Align with adjacent inline elements like .event_button */
+    line-height: 1; /* Prevent any line-height inheritance issues */
+	font-size:12px;
+	box-shadow: 1px 1px black;
+	background-color:#eaea97;
+	
+	border:1px solid black; 
+	border-radius:10%;
+	
+	padding: 2px; /* Reset padding */
+    
+    margin: 0; /* Reset margins */
+	margin-left:3px;   
+}
+
+figure.continuar {
+	float:right;
+	width:12%; /*15px*/
+	display:block;
+	margin:0px;
+	margin-right:5%;
+}
+
+div.ticket {
+	display:inline-flex;
+	align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally if needed */
+	vertical-align: middle; /* Align with adjacent inline elements like .event_button */
+    line-height: 1; /* Prevent any line-height inheritance issues */
+	font-size:12px;
+	box-shadow: 1px 1px black;
+	background-color:#eaea97;
+	border:1px solid black; 
+	border-radius:10%;
+	padding: 2px; /* Reset padding */
+    margin: 0; /* Reset margins */
+	margin-left:3px; 
+	margin-right:20px;   
+
+}
+
+
+
+
+.coluna_eventos {
+	display: flex;
+    flex-wrap: wrap;
+	position:absolute;
+	width:33.3%;
+}
+
+.container_evento {
+    cursor: pointer; /* Indicate clickability */
+	border-left: var(--global-margin) white solid;
+	position: relative;
+	width:100%;
+	display:block;
+	flex-direction: column;
+	transition: transform 0.3s ease-in-out;
+}
+
+.border_right_div {
+	width:100%;
+	padding-right: var(--global-margin);
+	position:absolute;
+}
+
+.container_evento:hover {
+	transform: scale(0.95);
+}
+
+.container_evento-right {
+	border-left: var(--global-margin) white solid;
+	border-right: var(--global-margin) white solid;
+	position: relative;
+	width:100%;
+	display:block;
+	flex-direction: column;
+	transition: transform 0.3s ease-in-out;
+}
+.container_evento-right:hover {
+	transform: scale(0.95);
+}
+
+
+div.prog_symbols{
+	width:100%;
+	display:block"
+}
+div.prog_title{
+	width:90%;
+	font-size:24px;
+	line-height: 1;
+
+}
+div.prog_date{
+	width:98%;
+	font-size:14px;
+	text-align:right;
+	line-height: 1; /* Adjust this value to decrease space between lines */
+}
+
+div.prog_desc{
+	width:90%;
+	font-size:15px;
+    line-height: 1; /* Adjust this value to decrease space between lines */
+}
+
+div.prog_break{
+	border-top:var(--global-margin) white solid;
+}
+
+/* If you want to allow scrolling but hide the scrollbar */
+body {
+  overflow: auto; /* Enables scrolling */
+  scrollbar-width: none; /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none !important; /* For Chrome, Safari, and Edge */
+}
+
+* {
+  scrollbar-width: none; /* For Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+.book-menu-content {
+	border-left: 1px solid #d3d3d3;
+}
+
+/* Generic components */
+h1.page-title {
+	margin-left: var(--global-margin);
+	font-weight: 500;
+	font-size:48px;
+}
+figure.custom-image {
+  margin: 0; /* Override any inherited margin */
+  line-height: 0;
+  width:100%;
+}
+.custom-container {
+	width: 33.333%;
+	float: left;
+	display: block;
+	position: relative;
+	margin: 0px;
+}
+/* Galery containers */
+.main-event-image{
+	max-height: calc(70 * var(--global-margin));
+	max-width:100%;
+	display: block;
+	position: relative;
+	margin:0px;
+	transform: translate(0, 0);
+	float: left;
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+.custom-image{
+	cursor: pointer; /* Changes mouse to pointer on hover */
+	width:100%;
+	display: block;
+	position: relative;
+	margin:0px;
+	transform: translate(0, 0);
+	float: left;
+	border-bottom: 0px white solid;
+	border-right: 0px white solid;
+	border-top: var(--global-margin) white solid;
+	border-left: var(--global-margin) white solid;
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.custom-image-right{
+	cursor: pointer; /* Changes mouse to pointer on hover */
+	width:100%;
+	display: block;
+	position: relative;
+	margin:0px;
+	transform: translate(0, 0);
+	float: left;
+	border-bottom: 0px white solid;
+	border-left: var(--global-margin) white solid;
+	border-top: var(--global-margin) white solid;
+	border-right: var(--global-margin) white solid;
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+
+.prog_image {
+	width:100%;
+	top:10px;
+	display: block;
+	position: relative;
+	margin: 0px;
+}
+
+figure.prog_image {
+	margin:0px;
+}
+
+
+.container2 {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    gap: 10px; /* Optional: adjust the gap between images */
+    width: 100%;
+}
+
+.custom-container2 {
+    position: relative;
+    margin: 0;
+}
+
+.custom-image2 {
+    max-width: 100%;  /* Ensures image scales to fit its container */
+    height: auto;     /* Maintains the aspect ratio of the image */
+    display: block;   /* Ensures image is displayed as a block-level element (no spacing below) */
+}

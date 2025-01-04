@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Residentes on Espaço AGRA</title>
+    <link>http://localhost:1313/menu/residentes/</link>
+    <description>Recent content in Residentes on Espaço AGRA</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Nov 2024 12:31:02 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/menu/residentes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Erva Daninha</title>
+      <link>http://localhost:1313/menu/residentes/erva_daninha/</link>
+      <pubDate>Mon, 25 Nov 2024 12:31:02 +0000</pubDate>
+      <guid>http://localhost:1313/menu/residentes/erva_daninha/</guid>
+      <description>&lt;p&gt;Aqui redirecionamos para o site da Erva Daninha.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Nuisis Zobop</title>
+      <link>http://localhost:1313/menu/residentes/nuisis_zobop/</link>
+      <pubDate>Mon, 25 Nov 2024 12:31:02 +0000</pubDate>
+      <guid>http://localhost:1313/menu/residentes/nuisis_zobop/</guid>
+      <description>&lt;p&gt;Aqui redirecionamos para o site da Nuisis Zobop.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Estúdio Cedofeita</title>
+      <link>http://localhost:1313/menu/residentes/estudio_cedofeita/</link>
+      <pubDate>Mon, 25 Nov 2024 12:31:02 +0000</pubDate>
+      <guid>http://localhost:1313/menu/residentes/estudio_cedofeita/</guid>
+      <description>&lt;p&gt;Aqui redirecionamos para o site do Estúdio Cedofeita.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Move In</title>
+      <link>http://localhost:1313/menu/residentes/move_in/</link>
+      <pubDate>Mon, 25 Nov 2024 12:31:02 +0000</pubDate>
+      <guid>http://localhost:1313/menu/residentes/move_in/</guid>
+      <description>&lt;p&gt;Aqui redirecionamos para um contacto da Move In.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

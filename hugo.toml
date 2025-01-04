@@ -1,0 +1,15 @@
+baseURL = "http://localhost:1313/"
+languageCode = 'en-us'
+title = 'Espaço AGRA'
+theme = 'hugo-book'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+	  
+[params]
+  BookSearch = false
+  BookToC = false
+  BookLogo = "/images/agra_logo.png"
+  globalMargin = "10px"

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Event Manager
+Welcome to the BackOffice. Here you can manage the Events in &#34;Programação&#34;:
+
+
+    
+        If necessary use this to upload a picture to the Database:
+        
+        Upload
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+            Upload Event
+            Event Title: *
+            
+            Type: *
+            
+            Event Description: *
+            
+            Image Name: *
+            
+                Select an image
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+            
+        
+            Refresh List
+            Starting Date: *
+            
+            Finishing Date:
+            
+            
+            Select Event Hour: *
+            
+                -- 
+                00h
+                01h
+                02h
+                03h
+                04h
+                05h
+                06h
+                07h
+                08h
+                09h
+                10h
+                11h
+                12h
+                13h
+                14h
+                15h
+                16h
+                17h
+                18h
+                19h
+                20h
+                21h
+                22h
+                23h
+            
+        
+            
+            
+                -- 
+                00
+                15
+                30
+                45
+            
+                
+            ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/upload-events/">
+  <meta property="og:site_name" content="Espaço AGRA">
+  <meta property="og:title" content="Event Manager">
+  <meta property="og:description" content="Event ManagerWelcome to the BackOffice. Here you can manage the Events in &#34;Programação&#34;:
+If necessary use this to upload a picture to the Database:
+UploadUpload EventEvent Title: *
+Type: *
+Event Description: *
+Image Name: *
+Select an imageRefresh List
+Starting Date: *
+Finishing Date:
+Select Event Hour: *-- 00h01h02h03h04h05h06h07h08h09h10h11h12h13h14h15h16h17h18h19h20h21h22h23h-- 00153045">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2024-11-25T12:03:59+00:00">
+    <meta property="article:modified_time" content="2024-11-25T12:03:59+00:00">
+<title>Event Manager | Espaço AGRA</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/upload-events/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous"><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+   
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Event Manager</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 class="page-title">Event Manager</h1>
+<p>Welcome to the BackOffice. Here you can manage the Events in "Programação":</p>
+
+<div style="margin:5px; border: 2px solid black;padding:10px; width:auto;">
+    <form onsubmit="uploadPictureNow(event)">
+        <label for="picture">If necessary use this to upload a picture to the Database:</label><br>
+        <input type="file" id="picture" name="picture" accept="image/*"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+<script>
+
+async function uploadPictureNow(event) {
+    event.preventDefault();
+    const fileInput = document.getElementById('picture');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Please select a picture to upload.');
+        return;
+    }
+
+    
+    const newFileName = file.name.replace(/\s+/g, '-');
+
+
+    
+    const newFile = new File([file], newFileName, { type: file.type });
+
+    const formData = new FormData();
+    formData.append('picture', newFile);
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert(result.file_upload);
+        } else {
+            alert(result.error || 'Failed to upload picture');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error uploading picture');
+    }
+}
+</script>
+
+
+
+
+
+
+
+<div style="display: flex; flex-wrap: wrap; position:absolute; left:0%; padding-right:10px; width:100%;height:100%;">
+
+    <div class="coluna_eventos" style="left:0%; width:66.6%; margin-left:10px">
+        <form id="eventForm" onsubmit="redirectToSummary(event)">
+            <h2>Upload Event</h2>
+            <label for="eventTitle">Event Title: *</label><br>
+            <input type="text" id="eventTitle" name="eventTitle" required><br><br>
+            <label for="Type">Type: *</label><br>
+            <input type="text" id="eventType" name="eventType" required><br><br>
+            <label for="eventDescription">Event Description: *</label><br>
+            <textarea id="eventDescription" name="eventDescription" rows="4" cols="50" required></textarea><br><br>
+            <label for="imageName">Image Name: *</label><br>
+            <select id="imageName" name="imageName" required>
+                <option value="">Select an image</option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+                        <option value=""></option>
+                    
+            </select>
+        
+            <button type="button" onclick="refreshImageList()">Refresh List</button><br><br>
+            <label for="eventDate">Starting Date: *</label><br>
+            <input type="date" id="eventDate" name="eventDate" required onchange="toggleDate()"><br><br>
+            <label for="Finish_eventDate">Finishing Date:</label><br>
+            <input type="date" id="Finish_eventDate" name="Finish_eventDate"><br><br>
+            
+            <label for="eventHour">Select Event Hour: *</label>
+            <select id="eventHour" name="eventHour" required>
+                <option value="" disabled selected>--</option> 
+                <option value="00">00h</option>
+                <option value="01">01h</option>
+                <option value="02">02h</option>
+                <option value="03">03h</option>
+                <option value="04">04h</option>
+                <option value="05">05h</option>
+                <option value="06">06h</option>
+                <option value="07">07h</option>
+                <option value="08">08h</option>
+                <option value="09">09h</option>
+                <option value="10">10h</option>
+                <option value="11">11h</option>
+                <option value="12">12h</option>
+                <option value="13">13h</option>
+                <option value="14">14h</option>
+                <option value="15">15h</option>
+                <option value="16">16h</option>
+                <option value="17">17h</option>
+                <option value="18">18h</option>
+                <option value="19">19h</option>
+                <option value="20">20h</option>
+                <option value="21">21h</option>
+                <option value="22">22h</option>
+                <option value="23">23h</option>
+            </select>
+        
+            
+            <select id="eventMinute" name="eventMinute" required>
+                <option value="" disabled selected>--</option> 
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+                
+            <p id="selectedTime"></p>
+        
+        
+            <div>
+                <label for="AGRA">AGRA</label>
+                <input type="checkbox" id="AGRA" name="AGRA" value="Yes" onchange="toggleAGRA()">
+                <label for="RCA">RCA</label>
+                <input type="checkbox" id="RCA" name="RCA" value="Yes" onchange="toggleRCA()">
+                <label for="ED">Erva Daninha</label>
+                <input type="checkbox" id="ED" name="ED" value="Yes" onchange="toggleED()">
+                <label for="NZ">Nuisis Zobop</label>
+                <input type="checkbox" id="NZ" name="NZ" value="Yes"  onchange="toggleNZ()">
+            </div>   
+            <button type="submit">Upload Event</button>
+            <button type="button" onclick="window.location.href='/docs/office'">Go Back to Main Office</button>
+        </form>
+        
+    
+    </div>    
+    <div class="coluna_eventos" style="left:66.6%">
+        <div class="container_evento">
+                <figure class="prog_image">
+                    <img id="selectedImage" src="" alt="Select Image" />
+                </figure>
+                <div class="prog_break"></div>
+                <div class="prog_symbols">
+                    <div style="text-align:left; width:100%;">
+                        <div id="agraContainer" style="width:auto;"></div>
+                        <div id="rcaContainer" style="width:auto;"></div>     
+                        <div id="edContainer" style="width:auto;"></div>
+                        <div id="nzContainer" style="width:auto;"></div>
+                        <div id="dateContainer" style="width:auto;"></div>
+
+                    </div>   
+                </div>
+                <div class="prog_break"></div>
+                <div class="prog_title" id="displayedTitle"> </div>
+                <div class="prog_desc" id="displayedDesc"> </div>
+                <div class="prog_break"></div>
+                <div class="prog_break"></div>
+        </div>
+    </div>    
+</div>
+
+
+
+
+<script>
+    function toggleDate() {
+        const dateInput = document.getElementById("eventDate");
+        const dateContainer = document.getElementById("dateContainer");
+
+        if (dateInput.value) {
+            
+            const date = new Date(dateInput.value);
+
+            
+            const weekdays = ['dom.', 'seg.', 'ter.', 'qua.', 'qui.', 'sex.', 'sáb.'];
+            const months = ['/01', '/02', '/03', '/04', '/05', '/06', '/07', '/08', '/09', '/10', '/11', '/12'];
+
+            const dayOfWeek = weekdays[date.getDay()];
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = months[date.getMonth()];
+
+            
+            const formattedDate = `${dayOfWeek} ${day}${month}`;
+
+            
+            dateContainer.innerHTML = `<span class="event_button date" style="margin-left:3px"> ${formattedDate}</span>`;
+        } else {
+            
+            dateContainer.innerHTML = '';
+        }
+    }
+
+    function toggleAGRA() {
+        const isChecked = document.getElementById("AGRA").checked;
+        const agraContainer = document.getElementById("agraContainer");
+
+        if (isChecked) {
+            agraContainer.innerHTML = '<span class="event_button agra" style="margin-left:3px">AGRA</span>';
+        } else {
+            agraContainer.innerHTML = ''; 
+        }
+    }
+    function toggleED() {
+        const isChecked = document.getElementById("ED").checked;
+        const edContainer = document.getElementById("edContainer");
+
+        if (isChecked) {
+            edContainer.innerHTML = '<span class="event_button ervaDaninha" style="margin-left:3px">Erva Daninha</span>';
+        } else {
+            edContainer.innerHTML = ''; 
+        }
+    }
+    function toggleNZ() {
+        const isChecked = document.getElementById("NZ").checked;
+        const nzContainer = document.getElementById("nzContainer");
+
+        if (isChecked) {
+            nzContainer.innerHTML = '<span class="event_button nuisis" style="margin-left:3px">Nuisis Zobop</span>';
+        } else {
+            nzContainer.innerHTML = ''; 
+        }
+    }
+    function toggleRCA() {
+        const isChecked = document.getElementById("RCA").checked;
+        const rcaContainer = document.getElementById("rcaContainer");
+
+        if (isChecked) {
+            rcaContainer.innerHTML = '<span class="event_button rca" style="margin-left:3px">RCA</span>';
+        } else {
+            rcaContainer.innerHTML = ''; 
+        }
+    }
+
+
+
+
+
+    function getEventTime() {
+        const hour = document.getElementById('eventHour').value;
+        const minute = document.getElementById('eventMinute').value;
+        
+        const selectedTime = `${hour}:${minute}`;
+        
+        
+        document.getElementById('selectedTime').innerText = `Selected Event Time: ${selectedTime}`;
+        
+        
+    }
+    
+    document.getElementById('eventDescription').addEventListener('input', function () {
+        const enteredDesc = this.value; 
+        const descContainer = document.getElementById('descContainer');
+        const displayedDesc = document.getElementById('displayedDesc');
+
+        if (enteredDesc) {
+            displayedDesc.style.display = 'block'; 
+            displayedDesc.textContent = `${enteredDesc}`; 
+        } else {
+            displayedDesc.style.display = 'none'; 
+        }
+    });
+
+    
+    document.getElementById('eventTitle').addEventListener('input', function () {
+        const enteredTitle = this.value; 
+        const titleContainer = document.getElementById('titleContainer');
+        const displayedTitle = document.getElementById('displayedTitle');
+
+        if (enteredTitle) {
+            displayedTitle.style.display = 'block'; 
+            displayedTitle.textContent = `${enteredTitle}`; 
+        } else {
+            displayedTitle.style.display = 'none'; 
+        }
+    });
+
+    document.getElementById('imageName').addEventListener('change', function () {
+        const selectedImageName = this.value; 
+        const imageContainer = document.getElementById('imageContainer');
+        const selectedImage = document.getElementById('selectedImage');
+
+        if (selectedImageName) {
+            
+            const imageUrl = `/images/${selectedImageName}`;
+            selectedImage.src = imageUrl; 
+            selectedImage.style.display = 'block'; 
+        } else {
+            
+            selectedImage.style.display = 'none';
+        }
+    });
+
+    async function refreshImageList() {
+        const dropdown = document.getElementById('imageName');
+
+        try {
+            
+            const response = await fetch('http://127.0.0.1:5000/upload');
+            if (!response.ok) {
+                throw new Error('Failed to fetch image list');
+            }
+
+            const data = await response.json(); 
+
+            
+            dropdown.innerHTML = '<option value="">Select an image</option>';
+
+            
+            if (data.images && Array.isArray(data.images)) {
+                data.images.forEach((image) => {
+                    const option = document.createElement('option');
+                    option.value = image.name;
+                    option.textContent = image.name;
+                    dropdown.appendChild(option);
+                });
+            } else {
+                throw new Error('Invalid response structure');
+            }
+
+            alert('Image List Refreshed!');
+        } catch (error) {
+            console.error('Error refreshing image list:', error);
+            alert('Failed to refresh image list.');
+        }
+    }
+    async function uploadPicture(event) {
+        event.preventDefault();
+        const fileInput = document.getElementById('picture');
+        const file = fileInput.files[0];
+    
+        if (!file) {
+            alert('Please select a picture to upload.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('picture', file);
+    
+        try {
+            const response = await fetch('http://127.0.0.1:5000/upload', {
+                method: 'POST',
+                body: formData
+            });
+    
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.file_upload);
+            } else {
+                alert(result.error || 'Failed to upload picture');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error uploading picture');
+        }
+    }
+    
+    function redirectToSummary(event) {
+        event.preventDefault(); 
+
+        
+        const form = document.getElementById('eventForm');
+
+        
+        const formData = new FormData(form);
+
+        
+        const params = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+            params.append(key, value);
+        }
+
+        
+        const targetURL = `/upload-long-event?${params.toString()}`;
+        window.location.href = targetURL; 
+    }
+
+
+    
+    document.getElementById('eventDate').addEventListener('input', function () {
+        const startingDate = this.value;
+        const displayDiv = document.getElementById('startingDateDisplay');
+        displayDiv.textContent = startingDate 
+            ? `Starting Date: ${startingDate}` 
+            : 'Starting Date: Not selected';
+    });
+
+    
+    document.getElementById('Finish_eventDate').addEventListener('input', function () {
+        const finishingDate = this.value;
+        const displayDiv = document.getElementById('finishingDateDisplay');
+        displayDiv.textContent = finishingDate 
+            ? `Finishing Date: ${finishingDate}` 
+            : 'Finishing Date: Not selected';
+    });
+
+</script>
+    
+    
+    
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+	<aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav style="height:100%">
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/images/agra_logo.png" alt="Logo" class="book-icon" />
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programa/" class="">Programação</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/espacos/" class="">Espaços de Trabalho</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/music_riots/" class="">Music &amp; Riots Shop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Residentes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/residentes/erva_daninha/" class="">Erva Daninha</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/residentes/nuisis_zobop/" class="">Nuisis Zobop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/residentes/estudio_cedofeita/" class="">Estúdio Cedofeita</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/residentes/move_in/" class="">Move In</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/bar/" class="">Radioclube Agramonte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/galeria/" class="">Galeria</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/office/" class="">Office</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/sobre/" class="">Sobre</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 style="position:absolute;margin-bottom:0px;bottom:10px"> Espaço AGRA </h3>
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>	
+
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

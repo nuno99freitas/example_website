@@ -1,0 +1,49 @@
+<!-- Form for uploading a picture -->
+<div style="margin:5px; border: 2px solid black;padding:10px; width:auto;">
+    <form onsubmit="uploadPictureNow(event)">
+        <label for="picture">If necessary use this to upload a picture to the Database:</label><br>
+        <input type="file" id="picture" name="picture" accept="image/*"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+<script>
+// Function to handle picture upload
+async function uploadPictureNow(event) {
+    event.preventDefault();
+    const fileInput = document.getElementById('picture');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Please select a picture to upload.');
+        return;
+    }
+
+    // Replace spaces in the file name with hyphens
+    const newFileName = file.name.replace(/\s+/g, '-');
+
+
+    // Create a new file with the modified name
+    const newFile = new File([file], newFileName, { type: file.type });
+
+    const formData = new FormData();
+    formData.append('picture', newFile);
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert(result.file_upload);
+        } else {
+            alert(result.error || 'Failed to upload picture');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error uploading picture');
+    }
+}
+</script>

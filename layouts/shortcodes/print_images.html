@@ -1,0 +1,91 @@
+{{ $data := .Site.Data.mydata }}
+
+<!-- Containers for Image Columns -->
+<div class="custom-container" style="left:0%;position:absolute;">
+    {{ range $index, $item := $data }}
+        {{ if eq (mod $index 3) 0 }} <!-- Add condition to place images based on index -->
+            <img src="{{ $item.src }}" alt="Event Image" class="custom-image" onclick="openPopup('{{ $item.src }}')">
+        {{ end }}
+    {{ end }}
+</div>
+<div class="custom-container" style="left:33.3%;position:absolute;">
+    {{ range $index, $item := $data }}
+        {{ if eq (mod $index 3) 1 }} <!-- Images with index 1 (second set) -->
+            <img src="{{ $item.src }}" alt="Event Image" class="custom-image" onclick="openPopup('{{ $item.src }}')">
+        {{ end }}
+    {{ end }}
+</div>
+<div class="custom-container" style="left:66.6%;position:absolute;">
+    {{ range $index, $item := $data }}
+        {{ if eq (mod $index 3) 2 }} <!-- Images with index 2 (third set) -->
+            <img src="{{ $item.src }}" alt="Event Image" class="custom-image-right" onclick="openPopup('{{ $item.src }}')">
+        {{ end }}
+    {{ end }}
+</div>
+
+<!-- Pop-up Modal -->
+<div id="imagePopup" class="popup-overlay" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation();">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <img id="popupImage" src="" alt="Full Image">
+    </div>
+</div>
+
+<!-- CSS for Pop-up -->
+<style>
+.popup-overlay {
+    display: None; /* Initially hidden */
+    position: fixed; /* Ensures it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it's above all other elements */
+    justify-content: center;
+    align-items: center;
+    /*background-color: rgba(0, 0, 0, 0.7); /* Optional for a dark backdrop */
+}
+
+.popup-content {
+    position: relative;
+    max-width: 90%;
+    /*background: white; /* Optional for contrast */
+    border-radius: 8px; /* Optional for aesthetics */
+    overflow: hidden;
+    transform: translateY(calc(var(--scroll-offset, 0) * 1px)); /* Dynamically adjust based on scroll */
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #f6ebeb;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+</style>
+
+<!-- JavaScript for Pop-up -->
+<script>
+function openPopup(imageSrc) {
+    const popupOverlay = document.getElementById('imagePopup');
+    const popupImage = document.getElementById('popupImage');
+
+    // Set the image source
+    popupImage.src = imageSrc;
+
+    // Calculate and set the scroll offset as a CSS variable
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    popupOverlay.style.setProperty('--scroll-offset', scrollTop);
+
+    // Show the pop-up
+    popupOverlay.style.display = 'flex';
+}
+
+function closePopup() {
+    const popupOverlay = document.getElementById('imagePopup');
+    popupOverlay.style.display = 'none'; // Hide the pop-up
+}
+
+</script>
+    

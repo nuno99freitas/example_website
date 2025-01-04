@@ -1,0 +1,32 @@
+{{ with .Site.Params.author }}
+  <section class="sidebar mb-3 pt-2 pt-1">
+    <header class="px-2 pt-2 pb-3 m-auto text-start fw-bold">AUTHOR</header>
+    <div class="author p-2 text-center">
+      {{ with .thumbnailUrl }}
+        <div
+          class="author-thumb mt-0 mx-auto mb-3 rounded-circle"
+          style="background-image: url({{ . | absURL }});"
+        ></div>
+      {{ end }}
+      <div class="mb-2 fw-semibold">{{ .name }}</div>
+      <div class="row justify-content-center mb-2">
+        {{ range $data := .sns }}
+          <div class="col-2">
+            <a
+              class="text-center d-inline rounded-1 fs-6"
+              href="{{ $data.Url }}"
+              rel="noopener nofollow"
+              target="_blank"
+            >
+              <i class="{{ $data.Icon }}" aria-hidden="true"></i>
+            </a>
+          </div>
+        {{ end }}
+      </div>
+
+      <div class="author-description text-start">
+        {{ .comment | safeHTML }}
+      </div>
+    </div>
+  </section>
+{{ end }}
