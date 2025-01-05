@@ -2,3 +2,14 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'hugo-book'
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+	  
+[params]
+  BookSearch = false
+  BookToC = false
+  BookLogo = "/images/agra_logo.png"
+  globalMargin = "10px"
+  useSCSS = true
