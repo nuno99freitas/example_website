@@ -13,3 +13,4 @@ theme = 'hugo-book'
   BookToC = false
   BookLogo = "/images/agra_logo.png"
   globalMargin = "10px"
+  useSCSS = true
