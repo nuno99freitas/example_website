@@ -1,0 +1,126 @@
+
+{{ $data := .Site.Data.myprograms }}
+{{ $today := now.Format "2006-01-02" }} <!-- Current date in YYYY-MM-DD format -->
+{{ $futureEvents := where $data "date_or" ">=" $today }}
+{{ $sortedData := sort $futureEvents "date_or" "asc" }}
+
+<div style="display: flex; flex-wrap: wrap; position:absolute; left:0%; padding-right:10px; width:100%;height:100%;">
+	<div class="coluna_eventos" style="left:0%">
+		{{ range $index, $item := $sortedData }}
+			{{ if eq (mod $index 3) 0 }} <!-- Add condition to place images based on index -->
+					<div class="container_evento" onclick="redirectToEvent('{{ $item.url }}')">
+						<figure class="prog_image">
+								<img src="{{ $item.src }}" alt="Event Image">
+						</figure>
+						<div class="prog_break"></div>
+						<div class="prog_symbols">
+							<div style="text-align:left; width:100%;">
+								{{ if eq $item.AGRA "Yes" }}
+									<span class="event_button agra" style="margin-left:3px">AGRA</span>
+								{{ end }}
+								{{ if eq $item.ED "Yes" }}
+									<span class="event_button ervaDaninha" style="margin-left:3px">Erva Daninha</span>
+								{{ end }}
+								{{ if eq $item.RCA "Yes" }}
+									<span class="event_button rca" style="margin-left:3px">RCA</span>
+								{{ end }}
+								{{ if eq $item.NUISIS "Yes" }}
+									<span class="event_button nuisis" style="margin-left:3px">Nuisis Zobop</span>
+								{{ end }}	  
+								<span class="event_button date"> {{ $item.date | safeHTML }}</span> <!-- Removed the span wrapper here -->
+							</div>
+						</div>
+						<div class="prog_break"></div>
+						<div class="prog_title">{{ $item.Title }}</div>
+						<div class="prog_desc">{{ $item.Description | safeHTML }}</div>
+						<div class="prog_break"></div>
+						<div class="prog_break"></div>
+
+					</div>
+			{{ end }}
+		{{ end }}
+	</div>
+
+	<div class="coluna_eventos" style="left:33.3%">
+		{{ range $index, $item := $sortedData }}
+			{{ if eq (mod $index 3) 1 }} <!-- Add condition to place images based on index -->
+				<div class="container_evento" onclick="redirectToEvent('{{ $item.url }}')">
+					<figure class="prog_image">
+							<img src="{{ $item.src }}" alt="Event Image">
+					</figure>
+					<div class="prog_break"></div>
+					<div class="prog_symbols">
+						<div style="text-align:left; width:100%;">
+							{{ if eq $item.AGRA "Yes" }}
+								<span class="event_button agra" style="margin-left:3px">AGRA</span>
+							{{ end }}
+							{{ if eq $item.ED "Yes" }}
+								<span class="event_button ervaDaninha" style="margin-left:3px">Erva Daninha</span>
+							{{ end }}
+							{{ if eq $item.RCA "Yes" }}
+								<span class="event_button rca" style="margin-left:3px">RCA</span>
+							{{ end }}
+							{{ if eq $item.NUISIS "Yes" }}
+								<span class="event_button nuisis" style="margin-left:3px">Nuisis Zobop</span>
+							{{ end }}	  
+							<span class="event_button date"> {{ $item.date | safeHTML }} </span> <!-- Removed the span wrapper here -->
+						</div>
+					</div>
+					<div class="prog_break"></div>
+					<div class="prog_title">{{ $item.Title }}</div>
+					<div class="prog_desc">{{ $item.Description | safeHTML }}</div>
+					<div class="prog_break"></div>
+					<div class="prog_break"></div>
+
+				</div>
+			{{ end }}
+		{{ end }}
+	</div>
+
+
+	<div class="coluna_eventos" style="left:66.6%">
+		{{ range $index, $item := $sortedData }}
+			{{ if eq (mod $index 3) 2 }} <!-- Add condition to place images based on index -->
+				<div class="container_evento" onclick="redirectToEvent('{{ $item.url }}')">
+					<figure class="prog_image">
+						<img src="{{ $item.src }}" alt="Event Image">
+					</figure>
+					<div class="prog_break"></div>
+					<div class="prog_symbols">
+						<div style="text-align:left; width:100%;">
+							{{ if eq $item.AGRA "Yes" }}
+								<span class="event_button agra" style="margin-left:3px">AGRA</span>
+							{{ end }}
+							{{ if eq $item.ED "Yes" }}
+								<span class="event_button ervaDaninha" style="margin-left:3px">Erva Daninha</span>
+							{{ end }}
+							{{ if eq $item.RCA "Yes" }}
+								<span class="event_button rca" style="margin-left:3px">RCA</span>
+							{{ end }}
+							{{ if eq $item.NUISIS "Yes" }}
+								<span class="event_button nuisis" style="margin-left:3px">Nuisis Zobop</span>
+							{{ end }}	  
+							<span class="event_button date"> {{ $item.date | safeHTML }}</span> <!-- Removed the span wrapper here -->
+						</div>
+					</div>
+					<div class="prog_break"></div>
+					<div class="prog_title">{{ $item.Title }}</div>
+					<div class="prog_desc">{{ $item.Description | safeHTML }}</div>
+					<div class="prog_break"></div>
+					<div class="prog_break"></div>
+				</div>
+			{{ end }}
+		{{ end }}
+	</div>
+</div>
+
+
+
+
+<script>
+	function redirectToEvent(slug) {
+	  // Redirect to the event page
+	  window.location.href = `/events/${slug}`;
+	}
+</script>
+  

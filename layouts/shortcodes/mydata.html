@@ -1,0 +1,12 @@
+<!-- Parent container -->
+<div class="custom-gallery">
+    {{ $data := .Site.Data.mydata }}
+    {{ range $data }}
+        <!-- Individual image container -->
+        <div class="custom-container">
+            <img src="{{ .src }}" alt="{{ .alt }}" class="custom-image">
+        </div>
+    {{ end }}
+</div>
+
+

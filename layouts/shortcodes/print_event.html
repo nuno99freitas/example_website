@@ -1,0 +1,265 @@
+{{ $photo_name_1 := .Get "photo_1" | default "No" }}
+{{ $photo_name_2 := .Get "photo_2" | default "No" }}
+{{ $photo_name_3 := .Get "photo_3" | default "No" }}
+{{ $photo_name_4 := .Get "photo_4" | default "No" }}
+{{ $photo_name_5 := .Get "photo_5" | default "No" }}
+{{ $photo_name_6 := .Get "photo_6" | default "No" }}
+
+
+
+<!-- <h1 class="page-title"> {{ .Get "title" }}</h1> -->
+<div class = "full_border">
+
+    <div class = "top_box" ></div>
+
+    <div class="ALL_Event">
+
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+
+        <div class="event_title">
+            {{ .Get "title" }}
+        </div>
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+
+        <div class="Event_info">
+
+            <div class="third_box">
+                <div>{{ .Get "type" }}</div>
+                <div>{{ .Get "place" }}</div>
+            </div>
+            <div class="two_third_box">
+                <div class="Event_info">
+                    <div class="half_box" style="background-color:rgb(255, 255, 255); text-align:right;">
+                        <div>{{ .Get "date" }}</div>
+                        <div>{{ .Get "hour" }}</div>
+                    </div>
+                    <div class="half_box" style="background-color:rgb(255, 255, 255); text-align:right;">
+                        entrada: {{ .Get "price" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+        <div class="prog_break"></div>
+    </div>
+    
+    <div class="sliding_images_container" id="imageSliderContainer">
+        {{ if ne $photo_name_1 "No" }} 
+            <img src="{{ $photo_name_1 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+        {{ if ne $photo_name_2 "No" }} 
+            <img src="{{ $photo_name_2 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+        {{ if ne $photo_name_3 "No" }} 
+            <img src="{{ $photo_name_3 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+        {{ if ne $photo_name_4 "No" }} 
+            <img src="{{ $photo_name_4 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+        {{ if ne $photo_name_5 "No" }} 
+            <img src="{{ $photo_name_5 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+        {{ if ne $photo_name_6 "No" }} 
+            <img src="{{ $photo_name_6 }}" alt="Event Image" class="image_sl">
+        {{ end}}
+
+    </div>
+        
+    <div class="prog_break"></div>
+    <div class="prog_break"></div>
+    <div class="prog_break"></div>
+    <div class="ALL_Event">
+        <div class="event_descripiton">
+        {{ .Get "description" | safeHTML }}
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+.sliding_images_container {
+    display: flex; /* Arrange images in a row */
+    justify-content: flex-start; /* Align images to the left */
+    align-items: center; /* Center images vertically */
+    overflow-x: auto; /* Enable horizontal scrolling for extra content */
+    white-space: nowrap; /* Prevent wrapping of images */
+    gap: 3px; /* Add space between images */
+    padding: 3px; /* Optional: Add padding inside the container */
+    user-select: none; /* Disable text selection */
+    -webkit-user-select: none; /* Safari support */
+    -ms-user-select: none; /* Internet Explorer/Edge support */
+}
+
+.image_sl {
+    user-select: none; /* Disable text selection for images */
+    -webkit-user-select: none; /* Safari support */
+    -ms-user-select: none; /* Internet Explorer/Edge support */
+    pointer-events: none; /* Prevent images from interfering with dragging */
+    flex-shrink: 0; /* Prevent images from shrinking */
+    height: 600px !important; /* Set consistent height */
+    width: auto; /* Adjust width automatically to maintain aspect ratio */
+    object-fit: cover; /* Ensure the image fills its area without distortion */
+    border: 3px solid #fff; /* Add 10px solid white border */
+    box-sizing: border-box; /* Ensure the border is included in the total width/height */
+}
+
+
+/* Center the second image */
+.sliding_images_container .image_sl:nth-child(1) {
+    z-index: 1; /* Bring the second image to the front */
+}
+
+
+
+
+.image_container{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.half_box {
+    width: 50%;
+    font-size: 40px; /* Change this value to your desired font size */
+    background-color: rgb(255, 255, 255);
+    line-height: 1; /* Adjust this value for line spacing */
+
+}
+
+.event_descripiton{
+    line-height: 1.2; /* Adjust this value for line spacing */
+    font-size: 35px; /* Change this value to your desired font size */  
+}
+
+.third_box {
+    width: 30%;
+    font-size: 40px; /* Change this value to your desired font size */
+    background-color: rgb(255, 255, 255);
+    line-height: 1; /* Adjust this value for line spacing */
+
+}
+.two_third_box {
+    width: 70%;
+    font-size: 40px; /* Change this value to your desired font size */
+    background-color: rgb(255, 255, 255);
+    line-height: 1; /* Adjust this value for line spacing */
+
+}
+
+
+.event_title {
+    font-size: 100px; /* Change this value to your desired font size */
+    background-color: rgb(255, 255, 255);
+    line-height: 0.8; /* Adjust this value for line spacing */
+}
+
+.ALL_Event{
+    padding-left:100px;
+    padding-right:100px;
+}
+
+.Event_info{
+    display: flex; /* Enables Flexbox for the container */
+    justify-content: space-between; /* Distributes the items with space between them */
+}
+.full_border{
+    border-left: 10px;
+    border-right: 10px;
+    border-color: white;
+}
+
+.image_container{
+    display: flex; /* Arrange images in a row */
+    gap: 5px; /* Space between images */
+	align-items: center;      /* Vertically centers the image */
+    justify-content: center; /* Center the images (optional) */
+}
+.image-slider-container {
+    position: relative;
+    max-width: 100%; /* Adjust as needed */
+    margin: auto;
+    overflow: hidden; /* Hide overflowing images */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.image-slider {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth sliding effect */
+    justify-content: center; /* Center images horizontally */
+    align-items: center;    /* Center images vertically */
+}
+
+.slider-image {
+    flex-shrink: 0;
+    max-width: 100%; /* Ensure images take full container width */
+    height: 600px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure the image fits properly */
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.slider-button.prev {
+    left: 10px;
+}
+
+.slider-button.next {
+    right: 10px;
+}
+
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}   
+</style>
+
+<script>
+let isMouseDown = false;
+let startX;
+let scrollLeft;
+
+const slider = document.getElementById('imageSliderContainer');
+
+// Mouse Down event (when user clicks the mouse on the image container)
+slider.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    startX = e.pageX - slider.getBoundingClientRect().left; // Use getBoundingClientRect() for more accurate calculation
+    scrollLeft = slider.scrollLeft; // Get the current scroll position of the container
+    slider.style.cursor = 'grabbing'; // Change the cursor to indicate dragging
+});
+
+// Mouse Move event (when the mouse is moving while clicked)
+slider.addEventListener('mousemove', (e) => {
+    if (!isMouseDown) return; // If the mouse is not pressed, do nothing
+    const x = e.pageX - slider.getBoundingClientRect().left; // Calculate mouse position relative to the container
+    const walk = (x - startX) * 2; // Calculate the distance the mouse has moved
+    slider.scrollLeft = scrollLeft - walk; // Scroll the container accordingly
+});
+
+// Mouse Up event (when the user releases the mouse button)
+slider.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    slider.style.cursor = 'grab'; // Reset the cursor to the default
+});
+
+// Mouse Leave event (if the mouse leaves the container while being pressed)
+slider.addEventListener('mouseleave', () => {
+    isMouseDown = false;
+    slider.style.cursor = 'grab'; // Reset the cursor to the default
+});
+</script>
