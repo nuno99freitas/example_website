@@ -19,7 +19,7 @@ $container-max-width: 80rem !default;
 $menu-width: 25% !default;
 $toc-width: 25% !default;
 
-$mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
+$mobile-breakpoint: $body-min-width * 2;// + $toc-width !default;
 
 $hint-colors: (
   info: #6bf,
