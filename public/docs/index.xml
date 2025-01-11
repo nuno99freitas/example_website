@@ -37,6 +37,13 @@
       <description>&lt;div class=&#34;top_box&#34;&gt; &lt;/div&gt;&#xA;&lt;!-- &lt;h1 class=&#34;page-title&#34;&gt; Bar / Restaurante &lt;/h1&gt; --&gt;&#xA;&lt;p&gt;Aqui colocaremos toda a informação relativa aos almoços e ao bar.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Amplify</title>
+      <link>http://localhost:1313/docs/try_amplify/</link>
+      <pubDate>Mon, 25 Nov 2024 12:03:59 +0000</pubDate>
+      <guid>http://localhost:1313/docs/try_amplify/</guid>
+      <description>&lt;!-- &lt;h1 class=&#34;page-title&#34;&gt; Galeria &lt;/h1&gt; --&gt;&#xD;&#xA;&lt;div class=&#34;top_box&#34;&gt; &lt;/div&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;import Amplify, { API } from &#39;aws-amplify&#39;;&#xD;&#xA;&#xD;&#xA;Amplify.configure({&#xD;&#xA;    API: {&#xD;&#xA;        endpoints: [&#xD;&#xA;            {&#xD;&#xA;                name: &#34;MyApiName&#34;,&#xD;&#xA;                endpoint: &#34;https://your-api-url.amazonaws.com/dev&#34;&#xD;&#xA;            }&#xD;&#xA;        ]&#xD;&#xA;    }&#xD;&#xA;});&#xD;&#xA;&#xD;&#xA;// Fetch data&#xD;&#xA;API.get(&#34;MyApiName&#34;, &#34;/path&#34;).then(response =&gt; {&#xD;&#xA;    console.log(response);&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;</description>
+    </item>
+    <item>
       <title>Galeria</title>
       <link>http://localhost:1313/docs/galeria/</link>
       <pubDate>Mon, 25 Nov 2024 12:03:59 +0000</pubDate>

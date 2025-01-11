@@ -79,6 +79,13 @@
       <description>&lt;h1 class=&#34;page-title&#34;&gt;Login&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Please log in to access the BackOffice.&lt;/p&gt;&#xD;&#xA;&lt;!-- Login Form --&gt;&#xD;&#xA;&lt;form id=&#34;loginForm&#34; onsubmit=&#34;handleLogin(event)&#34;&gt;&#xD;&#xA;    &lt;label for=&#34;username&#34;&gt;Username:&lt;/label&gt;&lt;br&gt;&#xD;&#xA;    &lt;input type=&#34;text&#34; id=&#34;username&#34; name=&#34;username&#34; required&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;    &lt;label for=&#34;password&#34;&gt;Password:&lt;/label&gt;&lt;br&gt;&#xD;&#xA;    &lt;input type=&#34;password&#34; id=&#34;password&#34; name=&#34;password&#34; required&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;    &lt;button type=&#34;submit&#34;&gt;Login&lt;/button&gt;&#xD;&#xA;&lt;/form&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;function handleLogin(event) {&#xD;&#xA;    event.preventDefault();&#xD;&#xA;&#xD;&#xA;    const username = document.getElementById(&#39;username&#39;).value;&#xD;&#xA;    const password = document.getElementById(&#39;password&#39;).value;&#xD;&#xA;&#xD;&#xA;    // Replace this with your backend login API call&#xD;&#xA;    if (username === &#39;admin&#39; &amp;&amp; password === &#39;password123&#39;) {&#xD;&#xA;        sessionStorage.setItem(&#39;loggedIn&#39;, &#39;true&#39;);&#xD;&#xA;        alert(&#39;Login successful!&#39;);&#xD;&#xA;        window.location.href = &#39;/docs/office2&#39;; // Redirect to the upload page&#xD;&#xA;    } else {&#xD;&#xA;        alert(&#39;Invalid username or password&#39;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&lt;/script&gt;</description>
     </item>
     <item>
+      <title>Amplify</title>
+      <link>http://localhost:1313/docs/try_amplify/</link>
+      <pubDate>Mon, 25 Nov 2024 12:03:59 +0000</pubDate>
+      <guid>http://localhost:1313/docs/try_amplify/</guid>
+      <description>&lt;!-- &lt;h1 class=&#34;page-title&#34;&gt; Galeria &lt;/h1&gt; --&gt;&#xD;&#xA;&lt;div class=&#34;top_box&#34;&gt; &lt;/div&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;import Amplify, { API } from &#39;aws-amplify&#39;;&#xD;&#xA;&#xD;&#xA;Amplify.configure({&#xD;&#xA;    API: {&#xD;&#xA;        endpoints: [&#xD;&#xA;            {&#xD;&#xA;                name: &#34;MyApiName&#34;,&#xD;&#xA;                endpoint: &#34;https://your-api-url.amazonaws.com/dev&#34;&#xD;&#xA;            }&#xD;&#xA;        ]&#xD;&#xA;    }&#xD;&#xA;});&#xD;&#xA;&#xD;&#xA;// Fetch data&#xD;&#xA;API.get(&#34;MyApiName&#34;, &#34;/path&#34;).then(response =&gt; {&#xD;&#xA;    console.log(response);&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;</description>
+    </item>
+    <item>
       <title>Event Manager</title>
       <link>http://localhost:1313/upload-events/</link>
       <pubDate>Mon, 25 Nov 2024 12:03:59 +0000</pubDate>
