@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
  
+
+My todos
+&#43; new
+
+
+    Try creating a new todo.
+    
+    
+    Review next step of this tutorial.
+    
+  
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/try_amplify/">
   <meta property="og:site_name" content="Espaço AGRA">
   <meta property="og:title" content="Amplify">
-  <meta property="og:description" content="">
+  <meta property="og:description" content="My todos&#43; newTry creating a new todo.Review next step of this tutorial.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -57,25 +68,20 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown book-article"><!-- <h1 class="page-title"> Galeria </h1> -->
 <div class="top_box"> </div>
-<script>
-import Amplify, { API } from 'aws-amplify';
 
-Amplify.configure({
-    API: {
-        endpoints: [
-            {
-                name: "MyApiName",
-                endpoint: "https://your-api-url.amazonaws.com/dev"
-            }
-        ]
-    }
-});
+<h1>My todos</h1>
+<button id="addTodo">+ new</button>
+<ul id="todoList"></ul>
+<div>
+    Try creating a new todo.
+    <br>
+    <a href="https://docs.amplify.aws/javascript/start/quickstart/">
+    Review next step of this tutorial.
+    </a>
+</div>  
+<script type="module" src="/static/js/amplify-setup.js"></script> 
 
-// Fetch data
-API.get("MyApiName", "/path").then(response => {
-    console.log(response);
-});
-</script></article>
+</article>
  
       
 

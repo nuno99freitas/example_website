@@ -41,7 +41,7 @@
       <link>http://localhost:1313/docs/try_amplify/</link>
       <pubDate>Mon, 25 Nov 2024 12:03:59 +0000</pubDate>
       <guid>http://localhost:1313/docs/try_amplify/</guid>
-      <description>&lt;!-- &lt;h1 class=&#34;page-title&#34;&gt; Galeria &lt;/h1&gt; --&gt;&#xD;&#xA;&lt;div class=&#34;top_box&#34;&gt; &lt;/div&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;import Amplify, { API } from &#39;aws-amplify&#39;;&#xD;&#xA;&#xD;&#xA;Amplify.configure({&#xD;&#xA;    API: {&#xD;&#xA;        endpoints: [&#xD;&#xA;            {&#xD;&#xA;                name: &#34;MyApiName&#34;,&#xD;&#xA;                endpoint: &#34;https://your-api-url.amazonaws.com/dev&#34;&#xD;&#xA;            }&#xD;&#xA;        ]&#xD;&#xA;    }&#xD;&#xA;});&#xD;&#xA;&#xD;&#xA;// Fetch data&#xD;&#xA;API.get(&#34;MyApiName&#34;, &#34;/path&#34;).then(response =&gt; {&#xD;&#xA;    console.log(response);&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;</description>
+      <description>&lt;!-- &lt;h1 class=&#34;page-title&#34;&gt; Galeria &lt;/h1&gt; --&gt;&#xD;&#xA;&lt;div class=&#34;top_box&#34;&gt; &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;&lt;h1&gt;My todos&lt;/h1&gt;&#xD;&#xA;&lt;button id=&#34;addTodo&#34;&gt;+ new&lt;/button&gt;&#xD;&#xA;&lt;ul id=&#34;todoList&#34;&gt;&lt;/ul&gt;&#xD;&#xA;&lt;div&gt;&#xD;&#xA;    Try creating a new todo.&#xD;&#xA;    &lt;br&gt;&#xD;&#xA;    &lt;a href=&#34;https://docs.amplify.aws/javascript/start/quickstart/&#34;&gt;&#xD;&#xA;    Review next step of this tutorial.&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;&lt;/div&gt;  &#xD;&#xA;&lt;script type=&#34;module&#34; src=&#34;http://localhost:1313/js/amplify-setup.js&#34;&gt;&lt;/script&gt;</description>
     </item>
     <item>
       <title>Galeria</title>
