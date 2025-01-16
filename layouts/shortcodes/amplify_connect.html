@@ -11,13 +11,9 @@
 </div>  
 <script>
 import { generateClient } from "aws-amplify/data";
-import './style.css';
 import { Amplify } from 'aws-amplify';
-import outputs from '../amplify_outputs.json';
 
-Amplify.configure(outputs);
 
-let client;
 
 // Initialize the client
 (async function initializeClient() {
