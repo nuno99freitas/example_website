@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -16,6 +16,7 @@ My todos
     Review next step of this tutorial.
     
   
+
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
@@ -79,7 +80,53 @@ https://github.com/alex-shpak/hugo-book
     Review next step of this tutorial.
     </a>
 </div>  
-<script type="module" src="/static/js/amplify-setup.js"></script> 
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const todos = [];
+    const todoList = document.getElementById("todoList");
+    c   onst addTodoButton = document.getElementById("addTodo");
+    addTodoButton.addEventListener("click", createTodo);
+    function updateUI() {
+        todoList.innerHTML = '';
+        todos.forEach(todo => {
+            const li = document.createElement('li');
+            li.textContent = todo.content ?? '';
+            todoList.appendChild(li);
+        });
+    }
+
+    function createTodo() {
+      console.log('createTodo');
+      const content = window.prompt("Todo content");
+      if (content) {
+          client.models.Todo.create({ content }).then(response => {
+              if (response.data && !response.errors) {
+                  todos.push(response.data);
+                  updateUI();
+              } else {
+                  console.error('Error creating todo:', response.errors);
+                  alert('Failed to create todo.');
+              }
+          }).catch(error => {
+              console.error('Network or other error:', error);
+              alert('Failed to create todo due to a network or other error.');
+          });
+      }
+  }
+
+
+    client.models.Todo.observeQuery().subscribe({
+        next: (data) => {
+            todos.splice(0, todos.length, ...data.items);
+            updateUI();
+        }
+    });
+});
+</script>
+<style>
+    
+</style>
 
 </article>
  

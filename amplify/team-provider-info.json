@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-agra-dev-ccfdc-authRole",
+      "UnauthRoleArn": "arn:aws:iam::205930605838:role/amplify-agra-dev-ccfdc-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::205930605838:role/amplify-agra-dev-ccfdc-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-agra-dev-ccfdc-deployment",
+      "UnauthRoleName": "amplify-agra-dev-ccfdc-unauthRole",
+      "StackName": "amplify-agra-dev-ccfdc",
+      "StackId": "arn:aws:cloudformation:eu-north-1:205930605838:stack/amplify-agra-dev-ccfdc/d9a971d0-d41f-11ef-80ee-06da6f2f1521",
+      "AmplifyAppId": "d2hsh7lrsncbio"
+    },
+    "categories": {
+      "function": {
+        "agraLambda01": {}
+      }
+    }
+  }
+}

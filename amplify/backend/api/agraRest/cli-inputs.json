@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/backRest": {
+      "name": "/backRest",
+      "lambdaFunction": "agraLambda01",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
