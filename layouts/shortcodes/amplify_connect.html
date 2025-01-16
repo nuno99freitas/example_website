@@ -10,48 +10,68 @@
     </a>
 </div>  
 <script>
+import { generateClient } from "aws-amplify/data";
+import './style.css';
+import { Amplify } from 'aws-amplify';
+import outputs from '../amplify_outputs.json';
+
+Amplify.configure(outputs);
+
+let client;
+
+// Initialize the client
+(async function initializeClient() {
+    client = await generateClient();
+})();
 
 document.addEventListener("DOMContentLoaded", function () {
     const todos = [];
     const todoList = document.getElementById("todoList");
     const addTodoButton = document.getElementById("addTodo");
+
     addTodoButton.addEventListener("click", createTodo);
+
     function updateUI() {
         todoList.innerHTML = '';
         todos.forEach(todo => {
             const li = document.createElement('li');
-            li.textContent = todo.content ?? '';
+            li.textContent = todo.content || '';
             todoList.appendChild(li);
         });
     }
 
     function createTodo() {
-      console.log('createTodo');
-      const content = window.prompt("Todo content");
-      if (content) {
-          client.models.Todo.create({ content }).then(response => {
-              if (response.data && !response.errors) {
-                  todos.push(response.data);
-                  updateUI();
-              } else {
-                  console.error('Error creating todo:', response.errors);
-                  alert('Failed to create todo.');
-              }
-          }).catch(error => {
-              console.error('Network or other error:', error);
-              alert('Failed to create todo due to a network or other error.');
-          });
-      }
-  }
-
+        console.log('createTodo');
+        const content = window.prompt("Todo content");
+        if (content) {
+            client.models.Todo.create({ content })
+                .then(response => {
+                    if (response.data && !response.errors) {
+                        todos.push(response.data);
+                        updateUI();
+                    } else {
+                        console.error('Error creating todo:', response.errors);
+                        alert('Failed to create todo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Network or other error:', error);
+                    alert('Failed to create todo due to a network or other error.');
+                });
+        }
+    }
 
     client.models.Todo.observeQuery().subscribe({
         next: (data) => {
             todos.splice(0, todos.length, ...data.items);
             updateUI();
+        },
+        error: (err) => {
+            console.error('Error observing todos:', err);
         }
     });
 });
+
 </script>
 <style>
     
